@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnapRoute Prototype</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">S</span><span>Snap<span>Route</span></span></div>
+        <div class="topbar-right">
+          <span id="runtimeBadge" class="badge badge-warn">SIMULATION MODE</span>
+          <span class="eyebrow">LOCALHOST ONLY</span>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow red">OLLAMA-COMPATIBLE LOCAL AI</p>
+          <h1>Route every request to the right Snapdragon path.</h1>
+          <p class="lede">A working prototype of model resolution, explainable routing, runtime telemetry, and safe pre-token fallback.</p>
+        </div>
+        <div class="route-visual" aria-label="Request route visual">
+          <span>Client</span><i></i><span>SnapRoute</span><i class="selected"></i><span class="npu">NPU</span>
+        </div>
+      </section>
+
+      <section class="status-grid">
+        <article class="status-card wide">
+          <div class="section-head"><p class="eyebrow">ACTIVE EXECUTION PLAN</p><span id="planState" class="pulse-dot">READY</span></div>
+          <h2 id="activeTitle">Calculating the best available plan</h2>
+          <p id="activeReason">SnapRoute filters candidates by compatibility, then ranks latency, efficiency, CPU load, memory, and reliability.</p>
+          <div id="planMeta" class="plan-meta"></div>
+        </article>
+        <article class="status-card">
+          <p class="eyebrow">DEVICE PROFILE</p>
+          <h3 id="chipset">Checking device</h3>
+          <dl><div><dt>Memory available</dt><dd id="memory">–</dd></div><div><dt>Runtime</dt><dd id="runtime">–</dd></div></dl>
+        </article>
+        <article class="status-card">
+          <p class="eyebrow">ROUTING MODE</p>
+          <div class="mode-picker" role="group" aria-label="Routing mode">
+            <button data-mode="eco">Eco</button><button data-mode="balanced" class="active">Balanced</button><button data-mode="turbo">Turbo</button><button data-mode="manual">Manual</button>
+          </div>
+          <p class="small-copy">Mode changes the decision weights, not the safety checks.</p>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <article class="chat-panel">
+          <div class="section-head"><div><p class="eyebrow">OLLAMA API DEMO</p><h2>Send a local request</h2></div><span id="apiStatus" class="api-status">GET /api/tags ready</span></div>
+          <div id="chatLog" class="chat-log">
+            <div class="message assistant"><span>SnapRoute</span><p>Try a summarization request. The prototype will select a plan and show why it chose it.</p></div>
+          </div>
+          <form id="chatForm" class="composer">
+            <textarea id="prompt" rows="3" maxlength="1000" placeholder="Summarize why local AI should use the NPU when compatible..."></textarea>
+            <button type="submit">Route request <span>↗</span></button>
+          </form>
+          <div class="demo-controls"><label class="toggle"><input id="failureToggle" type="checkbox" /><span></span> Simulate preferred NPU load failure</label><span>Fallback occurs only before the first token.</span></div>
+        </article>
+
+        <aside class="telemetry-panel">
+          <div class="section-head"><div><p class="eyebrow">LIVE TELEMETRY</p><h2>Measured profile</h2></div><span id="telemetrySource" class="source">simulation</span></div>
+          <div class="metric"><span>Time to first token</span><strong id="ttft">–</strong><small>milliseconds</small></div>
+          <div class="metric"><span>Decode rate</span><strong id="decode">–</strong><small>tokens per second</small></div>
+          <div class="metric"><span>Average CPU load</span><strong id="cpu">–</strong><small>percent</small></div>
+          <div class="metric"><span>Energy index</span><strong id="energy">–</strong><small>comparative estimate</small></div>
+        </aside>
+      </section>
+
+      <section class="lower-grid">
+        <article class="candidates-panel">
+          <div class="section-head"><div><p class="eyebrow">MODEL RESOLUTION</p><h2>Verified candidates</h2></div><span class="source">alias: snaproute:qwen3-4b</span></div>
+          <div id="candidates" class="candidate-list"></div>
+        </article>
+        <article class="events-panel">
+          <div class="section-head"><div><p class="eyebrow">AUDIT TRAIL</p><h2>Route events</h2></div><span class="source">content-free</span></div>
+          <div id="events" class="events"></div>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
