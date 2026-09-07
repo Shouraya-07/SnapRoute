@@ -2,4 +2,21 @@ node_modules/
 .snaproute/
 *.log
 
-submission/
+# Local configuration and generated test output
+.env
+.env.*
+!.env.example
+coverage/
+.ppt-review/
+.codex-finalizer/
+
+# Keep the source documentation versioned, but leave exported submission
+# artifacts (PDF/PPTX/DOCX) out of the repository.
+Submission/*
+!Submission/solution.md
+!Submission/ppt-prompt.md
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini

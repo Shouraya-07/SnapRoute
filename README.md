@@ -2,6 +2,11 @@
 
 SnapRoute is a runnable prototype of an Ollama-compatible local AI gateway for Snapdragon PCs. It demonstrates the product layer around Qualcomm GenieX: model resolution, explainable routing, telemetry, and safe pre-token fallback.
 
+## Project documentation
+
+- [Solution design](Submission/solution.md)
+- [Short-pitch deck brief](Submission/ppt-prompt.md)
+
 ## Run locally
 
 ```powershell
